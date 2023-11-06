@@ -1,7 +1,7 @@
 import React from 'react'
 import { LuUser2 } from "react-icons/lu";
 import { useParams } from 'react-router-dom';
-import Button from '../../fragment/Button';
+import Button from '../../components/fragment/Button';
 
 const Passwordinputer = ()=>{
     const {email} = useParams();

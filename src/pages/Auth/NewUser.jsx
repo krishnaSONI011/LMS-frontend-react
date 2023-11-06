@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import Button from '../../fragment/Button'
+import Button from '../../components/fragment/Button'
 const NewUser = ()=>{
     const {email} = useParams()
     return <React.Fragment>

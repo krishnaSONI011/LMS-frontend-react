@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../fragment/Button'
+import Button from '../../components/fragment/Button'
 
 const Emailinputer = () => {
     return <>
