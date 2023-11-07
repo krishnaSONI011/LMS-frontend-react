@@ -10,7 +10,7 @@ const Askforuser=()=>{
                 <div className='border rounded w-2/6 p-3'>
                     {/* Topp */}
                             <div className='font-1 font-semibold text-2xl text-center'>
-                                <span className='text-purple-600 font-extrabold '>C</span>OURSES
+                                <span className='color-1 font-extrabold '>C</span>OURSES
                             </div>
                             <Routes>
                                 <Route path='/email' element={<Emailinputer />} />

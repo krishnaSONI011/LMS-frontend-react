@@ -17,7 +17,7 @@ const Passwordinputer = ()=>{
         </div>
         <div className='flex justify-center '>
             
-            <div className='flex items-center justify-between font-1 w-64 bg-purple-300  p-2 rounded-lg border-2 border-black'><span className='bg-white rounded-full '><LuUser2/></span> {email}</div>
+            <div className='flex items-center justify-between font-1 w-64 bg-color-2 text-white p-2 rounded-lg border-2 border-black'><span className='bg-white rounded-full text-black'><LuUser2/></span> {email}</div>
         </div>
         <div className='text-center pt-4  '>
             <input ref={focusInput} type="password" name='email' className='bg-gray-50 w-64 p-3 border rounded-md' placeholder='Password'/>

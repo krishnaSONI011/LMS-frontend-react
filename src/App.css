@@ -6,3 +6,21 @@
 font-family: 'Nunito Sans', sans-serif;
 
 }
+.color-1{
+  color:#bf5700;
+}
+.color-2{
+  color: #58355e;
+}
+.color-3{
+  color:  #e5dada;
+}
+.bg-color-1{
+  background-color:#bf5700;
+}
+.bg-color-2{
+  background-color: #58355e;
+}
+.bg-color-3{
+  background-color: #e5dada;
+}
