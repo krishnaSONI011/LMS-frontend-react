@@ -3,10 +3,13 @@ import './App.css';
 import Auth from './pages/Auth/Auth';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar/Navbar';
+import { DarkProvider } from './components/context/DarkMode';
 function App() {
   return (
    <>
 <BrowserRouter>
+<DarkProvider>
+
 <Routes>
   <Route path='/auth/*' element={<Auth/>}/>
 </Routes>
@@ -14,6 +17,7 @@ function App() {
 <Routes>
   
 </Routes>
+</DarkProvider>
 </BrowserRouter>
    </>
   );
