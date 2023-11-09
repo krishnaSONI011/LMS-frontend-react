@@ -4,7 +4,7 @@ import Auth from './pages/Auth/Auth';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar/Navbar';
 import { DarkProvider } from './components/context/DarkMode';
-import FirstSection from './pages/Home/FirstSection';
+import Home from './pages/Home/Home';
 function App() {
   return (
    <>
@@ -16,7 +16,7 @@ function App() {
 </Routes>
   <Navbar/>
 <Routes>
-  <Route path='/' element={<FirstSection/>} />
+  <Route path='/' element={<Home/>} />
 </Routes>
 </DarkProvider>
 </BrowserRouter>
