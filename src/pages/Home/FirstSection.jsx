@@ -8,7 +8,7 @@ const FirstSection = () => {
             <div className="flex items-center justify-between">
             <div>
                     <div className="font-1 text-md text-gray-400">LEARNERS AND STUDENTS</div>
-                    <div className="font-2 text-4xl font-semibold mt-1">You can learn anything.</div>
+                    <div className="font-3 text-3xl font-semibold mt-1">You can learn anything.</div>
                     <div>
                     <p className="w-4/6 mt-7 text-md font-1">
                     Students practice at their own pace, first filling in gaps in their understanding and then accelerating their learning.

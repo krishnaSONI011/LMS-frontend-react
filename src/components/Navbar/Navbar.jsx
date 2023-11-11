@@ -1,15 +1,28 @@
 import React from 'react';
+import { useState } from 'react';
 import { LuSearch,LuSun,LuMoon} from "react-icons/lu";
 import { useMode } from '../context/DarkMode';
 import Userbar from './Userbar';
 
 const Navbar = () =>{
     const [dark,setMode] = useMode();
+    const [shadow,toggleShadow] = useState(false)
    React.useEffect(()=>{
     document.body.style.backgroundColor = dark ? '#101426' : 'white'
    },[dark]) ;
+   let scroll 
+   
+ 
+   React.useEffect(()=>{
+    window.addEventListener('scroll',handle)
+   })
+   function handle(){
+    scroll = window.scrollY
+    if(scroll > 0 ) toggleShadow(true);
+    else if(scroll === 0) toggleShadow(false)
+   }
     return <>
-           <div className={`fixed w-screen ${dark ? 'bg-black' : 'bg-white'}`}>
+           <div className={`transition duration-200 ${shadow ? 'shadow' : 'shadow-none'} fixed w-screen ${dark ? 'bg-black' : 'bg-white'}`}>
                     <div className='flex p-3 items-center justify-between'>
 
 
