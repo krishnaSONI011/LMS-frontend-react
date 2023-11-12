@@ -3,7 +3,7 @@ import image from '../../assests/mockup-web.jpg'
 const Card = ()=>{
     return(
         <>
-            <div className='w-72 h-96 bg-white p-2 rounded-lg border '>
+            <div className='mx-4 hover:shadow-xl duration-200 w-64 h-[400px] bg-white p-2 rounded-lg border '>
                 <div className='text-center w-full flex justify-center'>
                     <img src={image} alt='' className='w-60 rounded'/>
                 </div>

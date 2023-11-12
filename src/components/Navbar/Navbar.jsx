@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { LuSearch,LuSun,LuMoon} from "react-icons/lu";
 import { useMode } from '../context/DarkMode';
 import Userbar from './Userbar';
-
+import logo from '../../assests/logo.png'
 const Navbar = () =>{
     const [dark,setMode] = useMode();
     const [shadow,toggleShadow] = useState(false)
@@ -26,16 +26,17 @@ const Navbar = () =>{
                     <div className='flex p-3 items-center justify-between'>
 
 
-                        <div className='flex w-96 justify-around'>
-                            <div className={`text-2xl font-2 ${dark ? 'text-white' : 'text-black'}`}>
-                            <span className='color-1'>C</span>OURSES
-                        </div>
+                        <div className='flex w-96 items-center mx-2 justify-around'>
+                            {/* <div className={`text-2xl font-2 ${dark ? 'text-white' : 'text-black'}`}>
+                            <span className='color-1'>C</span>OURSES */}
+                            <img src={logo} alt='' className='w-52'/>
+                        
 
 
 
                         <div>
                             <div className='flex items-center w-fit relative font-1'>
-                            <input type="text" className={`${dark ? 'bg-[#101426] border text-white' : 'bg-gray-50 border-2'} hover:outline-blue-500 hover:outline-1  p-1 rounded-lg focus:outline-[#E1E2F6]`} placeholder='Search'/>
+                            <input type="text" className={`${dark ? 'bg-[#101426] border  text-white' : 'bg-gray-50 border-2'} hover:outline-blue-500 hover:outline-1  p-1 rounded-lg focus:outline-[#E1E2F6]`} placeholder='Search'/>
                                 <LuSearch className={`absolute right-1 z-100 ${dark ? 'bg-slate-900 text-white' : 'bg-gray-50'} bg-gray-50 text-lg`}/>
                             </div>
                         </div>
