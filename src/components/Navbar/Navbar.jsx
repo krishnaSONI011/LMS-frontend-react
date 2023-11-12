@@ -2,7 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { LuSearch,LuSun,LuMoon} from "react-icons/lu";
 import { useMode } from '../context/DarkMode';
-import Userbar from './Userbar';
+import Userbar from './Userbar'
+import {Link} from 'react-router-dom'
 import logo from '../../assests/logo.png'
 const Navbar = () =>{
     const [dark,setMode] = useMode();
@@ -59,7 +60,7 @@ const Navbar = () =>{
                                     
                             </button>
                             <button className=' active:scale-95 duration-200 bg-[#e6f7ff] px-5 rounded-2xl  '>
-                                   Enroll
+                                <Link to='/auth/ask-user/email'>Enroll</Link>   
                             </button>
                             <div className={`hidden`}>
                             <Userbar/>
