@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { LuSearch,LuSun,LuMoon} from "react-icons/lu";
 import { useMode } from '../context/DarkMode';
 import Userbar from './Userbar'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import logo from '../../assests/logo.png'
 const Navbar = () =>{
+    const navi = useNavigate()
     const [dark,setMode] = useMode();
     const [shadow,toggleShadow] = useState(false)
    React.useEffect(()=>{
@@ -30,7 +31,7 @@ const Navbar = () =>{
                         <div className='flex w-96 items-center mx-2 justify-around'>
                             {/* <div className={`text-2xl font-2 ${dark ? 'text-white' : 'text-black'}`}>
                             <span className='color-1'>C</span>OURSES */}
-                            <img src={logo} alt='' className='w-52'/>
+                            <Link to='/'><img src={logo} alt='' className='w-52 active:scale-95 duration-200'/></Link>
                         
 
 
@@ -48,7 +49,8 @@ const Navbar = () =>{
 
                         <div className='font-1 flex justify-around w-96'>
                             <button className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`}>Learn</button>
-                            <button className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`}>Courses</button>
+                            <button className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`} onClick={()=>navi('/courses')}>Courses
+                            </button>
                             <button className={`p-3 active:scale-95 duration-200 ${dark ? 'hover:bg-slate-500' : 'hover:bg-gray-100'}  rounded-full `} onClick={()=>dark ? setMode(false) : setMode(true)}>
                                  {
                                      dark ? 
@@ -59,8 +61,8 @@ const Navbar = () =>{
                                      
                                     
                             </button>
-                            <button className=' active:scale-95 duration-200 bg-[#e6f7ff] px-5 rounded-2xl  '>
-                                <Link to='/auth/ask-user/email'>Enroll</Link>   
+                            <button className=' active:scale-95 duration-200 bg-[#e6f7ff] px-5 rounded-2xl  ' onClick={()=>navi('/auth/ask-user/email')}>
+                                Enroll   
                             </button>
                             <div className={`hidden`}>
                             <Userbar/>
