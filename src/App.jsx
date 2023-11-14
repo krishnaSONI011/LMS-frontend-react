@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import { DarkProvider } from './components/context/DarkMode';
 import Home from './pages/Home/Home';
 import Courses from './pages/Courses/Courses';
+import Single from './pages/Single-course-page/Single';
 function App() {
   return (
    <>
@@ -19,6 +20,7 @@ function App() {
 <Routes>
   <Route path='/' element={<Home/>} />
   <Route path='/courses' element={<Courses/>} />  
+  <Route path='/courses/:coursesSlug' element={<Single/>} />
 </Routes>
 </DarkProvider>
 </BrowserRouter>
