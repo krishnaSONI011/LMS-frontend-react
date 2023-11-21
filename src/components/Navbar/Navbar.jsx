@@ -5,7 +5,11 @@ import { useMode } from '../context/DarkMode';
 import Userbar from './Userbar'
 import {Link,useNavigate} from 'react-router-dom'
 import logo from '../../assests/logo.png'
+import { useAuth } from '../context/authContext';
 const Navbar = () =>{
+
+    const [auth,setAuth] = useAuth()
+    
     const navi = useNavigate()
     const [dark,setMode] = useMode();
     const [shadow,toggleShadow] = useState(false)
@@ -61,13 +65,17 @@ const Navbar = () =>{
                                      
                                     
                             </button>
-                            <button className=' active:scale-95 duration-200 bg-[#e6f7ff] px-5 rounded-2xl  ' onClick={()=>navi('/auth/ask-user/email')}>
+                            {
+                                auth ?<>
+                                <div>
+                                <Userbar/>
+    
+                                </div> </> : <> <button className=' active:scale-95 duration-200 bg-[#e6f7ff] px-5 rounded-2xl  ' onClick={()=>navi('/auth/ask-user/email')}>
                                 Enroll   
-                            </button>
-                            <div className={`hidden`}>
-                            <Userbar/>
-
-                            </div>
+                            </button></>
+                            }
+                            
+                            
                         </div>
                         
                     </div>

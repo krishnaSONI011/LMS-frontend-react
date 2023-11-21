@@ -6,13 +6,15 @@ import Navbar from './components/Navbar/Navbar';
 import { DarkProvider } from './components/context/DarkMode';
 import Home from './pages/Home/Home';
 import Courses from './pages/Courses/Courses';
+import { ToastContainer } from 'react-toastify';
 import Single from './pages/Single-course-page/Single';
+import { AuthProvider } from './components/context/authContext';
 function App() {
   return (
    <>
 <BrowserRouter>
 <DarkProvider>
-
+<AuthProvider>
 <Routes>
   <Route path='/auth/*' element={<Auth/>}/>
 </Routes>
@@ -22,6 +24,8 @@ function App() {
   <Route path='/courses' element={<Courses/>} />  
   <Route path='/courses/:coursesSlug' element={<Single/>} />
 </Routes>
+< ToastContainer />
+</AuthProvider>
 </DarkProvider>
 </BrowserRouter>
    </>

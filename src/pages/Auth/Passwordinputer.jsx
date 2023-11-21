@@ -6,7 +6,8 @@ import Button from '../../components/fragment/Button';
 const Passwordinputer = ()=>{
     const {email} = useParams();
     const focusInput = React.useRef();
-
+    const name = localStorage.getItem('tempData')
+    console.log(name)
     React.useEffect(()=>{
         focusInput.current.focus();
     },[])
