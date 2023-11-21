@@ -3,15 +3,26 @@ import { Link } from 'react-router-dom'
 import { LuUser2,LuLogOut } from "react-icons/lu";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
+import {toast} from 'react-toastify'
 
 const Dropdown = ( )=>{
-    const [setAuth] = useAuth()
+    const [auth,setAuth] = useAuth()
     const navi = useNavigate()
     const logout = ()=>{
 
+        navi('/auth/ask-user/email')
         localStorage.removeItem('auth')
         setAuth(false)
-        navi('/auth/ask-user/email')
+        toast.success('Log out', {
+            position: 'bottom-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'dark',
+          });
     }
     return <>
     <div className="h-40 w-64 bg-white shadow-md py-3 rounded-lg border">
