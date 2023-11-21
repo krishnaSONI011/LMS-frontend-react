@@ -5,7 +5,7 @@ import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
 
 const Dropdown = ( )=>{
-    const [auth,setAuth] = useAuth()
+    const [setAuth] = useAuth()
     const navi = useNavigate()
     const logout = ()=>{
 
