@@ -9,7 +9,12 @@ import Courses from './pages/Courses/Courses';
 import { ToastContainer } from 'react-toastify';
 import Single from './pages/Single-course-page/Single';
 import { AuthProvider } from './components/context/authContext';
+import Admin from './admin/Admin';
 function App() {
+  const isAdminRoute = () => {
+    // Check if the current route is /admin
+    return window.location.pathname.includes('/admin');
+  };
   return (
    <>
 <BrowserRouter>
@@ -17,8 +22,11 @@ function App() {
 <AuthProvider>
 <Routes>
   <Route path='/auth/*' element={<Auth/>}/>
+  <Route path='/admin/*' element={<Admin/>} />
 </Routes>
-  <Navbar/>
+
+{!isAdminRoute() && <Navbar />}
+  {/* <Navbar/> */}
 <Routes>
   <Route path='/' element={<Home/>} />
   <Route path='/courses' element={<Courses/>} />  
