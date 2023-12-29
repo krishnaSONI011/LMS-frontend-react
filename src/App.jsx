@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import Single from './pages/Single-course-page/Single';
 import { AuthProvider } from './components/context/authContext';
 import Admin from './admin/Admin';
+import Account from './pages/Account/Account';
 function App() {
   const isAdminRoute = () => {
     // Check if the current route is /admin
@@ -31,6 +32,7 @@ function App() {
   <Route path='/' element={<Home/>} />
   <Route path='/courses' element={<Courses/>} />  
   <Route path='/courses/:coursesSlug' element={<Single/>} />
+  <Route path='/account' element={<Account/>} />
 </Routes>
 < ToastContainer />
 </AuthProvider>
