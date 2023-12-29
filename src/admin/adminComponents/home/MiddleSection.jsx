@@ -23,7 +23,7 @@ const MiddleSection = ()=>{
         <LuBell className='text-2xl'/>
         </div>
         </div>
-        <div className='flex justify-around'>
+        <div className='flex justify-around mt-10'>
         <Box title='Number of Student'/>
         <Box title='Number of Course'/>
         <Box title='Number of  '/>
