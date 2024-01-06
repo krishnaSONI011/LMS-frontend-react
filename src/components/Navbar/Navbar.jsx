@@ -6,7 +6,7 @@ import Userbar from './Userbar'
 import {Link,useNavigate} from 'react-router-dom'
 import logo from '../../assests/logo.png'
 import { useAuth } from '../context/authContext';
-const Navbar = () =>{
+const Navbar = props =>{
 
     const [auth,setAuth] = useAuth()
     
@@ -28,7 +28,7 @@ const Navbar = () =>{
     else if(scroll === 0) toggleShadow(false)
    }
     return <>
-           <div className={`transition duration-200 ${shadow ? 'shadow' : 'shadow-none'} fixed w-screen ${dark ? 'bg-black' : 'bg-white'}`}>
+           <div className={`transition ${props.hider ? 'hidden' : ''} duration-200 ${shadow ? 'shadow' : 'shadow-none'} fixed w-screen ${dark ? 'bg-black' : 'bg-white'}`}>
                     <div className='flex p-3 items-center justify-between'>
 
 
@@ -52,7 +52,7 @@ const Navbar = () =>{
                         </div>
 
                         <div className='font-1 flex justify-around w-96'>
-                            <button className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`}>Learn</button>
+                        <button onClick={()=> {navi('/learn'); }} className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`}>Learn</button>
                             <button className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`} onClick={()=>navi('/courses')}>Courses
                             </button>
                             <button className={`p-3 active:scale-95 duration-200 ${dark ? 'hover:bg-slate-500' : 'hover:bg-gray-100'}  rounded-full `} onClick={()=>dark ? setMode(false) : setMode(true)}>

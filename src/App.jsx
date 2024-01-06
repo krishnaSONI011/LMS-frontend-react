@@ -1,5 +1,6 @@
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation} from 'react-router-dom';
 import './App.css';
+import React from 'react';
 import Auth from './pages/Auth/Auth';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar/Navbar';
@@ -11,34 +12,39 @@ import Single from './pages/Single-course-page/Single';
 import { AuthProvider } from './components/context/authContext';
 import Admin from './admin/Admin';
 import Account from './pages/Account/Account';
-function App() {
-  const isAdminRoute = () => {
-    // Check if the current route is /admin
-    return window.location.pathname.includes('/admin');
-  };
-  return (
-   <>
-<BrowserRouter>
-<DarkProvider>
-<AuthProvider>
-<Routes>
-  <Route path='/auth/*' element={<Auth/>}/>
-  <Route path='/admin/*' element={<Admin/>} />
-</Routes>
+import LearnPortal from './pages/LearnPortal/LearnPortal';
+import NavbarHolder from './components/NavbarHolder';
 
-{!isAdminRoute() && <Navbar />}
-  {/* <Navbar/> */}
-<Routes>
-  <Route path='/' element={<Home/>} />
-  <Route path='/courses' element={<Courses/>} />  
-  <Route path='/courses/:coursesSlug' element={<Single/>} />
-  <Route path='/account' element={<Account/>} />
-</Routes>
-< ToastContainer />
-</AuthProvider>
-</DarkProvider>
-</BrowserRouter>
-   </>
+function App() {
+  
+
+
+  return (
+    <>
+      <BrowserRouter>
+        <DarkProvider>
+          <AuthProvider>
+            <Routes>
+              <Route path='/auth/*' element={<Auth />} />
+              <Route path='/admin/*' element={<Admin />} />
+              <Route path='/learn/*' element={<LearnPortal />} />
+            </Routes>
+            <NavbarHolder>
+
+            <Navbar />
+            </NavbarHolder>
+            <Routes>
+            
+              <Route path='/' element={<Home />} />
+              <Route path='/courses' element={<Courses />} />
+              <Route path='/courses/:coursesSlug' element={<Single />} />
+              <Route path='/account' element={<Account />} />
+            </Routes>
+            <ToastContainer />
+          </AuthProvider>
+        </DarkProvider>
+      </BrowserRouter>
+    </>
   );
 }
 
