@@ -2,12 +2,26 @@ import React from 'react'
 import Button from '../../components/fragment/Button'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 const Emailinputer = () => {
     const navi = useNavigate();
     const [email , setEmail] = React.useState('')
    
     const clickHendle = async ()=>{
         try{
+            if(email=== ''){
+                toast.warn('Fill Email First', {
+                    position: 'bottom-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'dark',
+                });
+                return;
+            }
                 const response = await axios.post('http://localhost:8080/api/user/email-verify',{email});
                 if(response.data.status){
                         localStorage.setItem('tempData',JSON.stringify(response.data.user))
