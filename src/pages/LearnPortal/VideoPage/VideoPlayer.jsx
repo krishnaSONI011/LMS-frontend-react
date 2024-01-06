@@ -1,5 +1,5 @@
 import React from 'react'
-import videosoasd from '../../../assests/video.mp4'
+
 const VideoPlayer = () => {
   return (
     <div>
