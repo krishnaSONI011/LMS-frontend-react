@@ -1,6 +1,10 @@
 import React from 'react'
 import profile from '../../assests/avatar5.png'
 const UserProfile = ()=>{
+  
+    const auth = JSON.parse(localStorage.getItem('auth'))
+    
+    
     return(
         <>
         {/* parent div */}
@@ -16,14 +20,14 @@ const UserProfile = ()=>{
                 <div>
                     {/* name div */}
                     <div className='font-1 font-semibold mt-7 text-lg border-b-2 text-center p-2'>
-                        Krishna Soni
+                        {auth.firstname + ' ' + auth.lastname}
                     </div>
                     {/* name div end */}
                     {/* other data div */}
                     <div>
                         {/* email div */}
                         <div className='font-1 border-b-2 p-2 text-center'>
-                                soni01krishna@gmail.com
+                                {auth.email}
                         </div>
                         {/* email div end */}
                         {/* address div */}

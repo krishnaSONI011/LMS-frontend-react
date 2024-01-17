@@ -1,8 +1,10 @@
 import React from 'react'
+import { useState } from 'react';
 import TodoInputer from './TodoInputer';
 import TodoWriter from './TodoWriter';
 
 const TodoSection = ()=>{
+    const [count,setCount] = useState(0) // this is for trigger the useeffect
     function getDate(){
         const today = new Date();
         const date = today.getDate();
@@ -28,8 +30,8 @@ const TodoSection = ()=>{
         </div>
         {/* date div end */}
         
-        <TodoInputer />
-        <TodoWriter />
+        <TodoInputer setCount={setCount} count={count}/>
+        <TodoWriter count={count} setCount={setCount}/>
         </div>
         </>
     )
