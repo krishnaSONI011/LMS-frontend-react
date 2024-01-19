@@ -39,6 +39,29 @@ const[data,setData] = useState([])
           theme: 'dark',
         });
         setAuth(true)
+        const userId = response.data.user.id
+        const date = new Date()
+        const day = date.getDate().toString(); 
+        const year = date.getFullYear().toString(); 
+        const month = (date.getMonth() + 1).toString();
+        const attadenceResponse = await axios.post('http://localhost:8080/api/attendence/send-attendence',{
+            userId,
+            year,
+            month,
+            day
+        })
+        if(attadenceResponse.data.status){
+          toast.success(attadenceResponse.data.message,{
+              position: 'bottom-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'dark',
+            })
+      }
       }
       else if(!response.data.status){
         toast.error(response.data.message, {
