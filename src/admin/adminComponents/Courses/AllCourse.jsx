@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const AllCourse = ()=>{
     const navi = useNavigate()
     const sender = ()=>{
-        navi('/admin/home/add-course')
+        navi('/admin/home/add-course?page_id=course')
     }
     return (
         <>

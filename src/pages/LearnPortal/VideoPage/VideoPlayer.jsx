@@ -1,15 +1,17 @@
 import React from 'react'
 
-const VideoPlayer = () => {
+const VideoPlayer = (props) => {
   return (
     <div>
-       <video   controls className='w-full h-[92vh]'>
+       {/* <video   controls className='w-full h-[92vh]'>
         <source
-          src={'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'}
+          src={'https://ln5.sync.com/dl/30a9cad70/eakk6acv-ummdgb6q-7um92nu8-yn68eifa'}
           type="video/mp4"
         />
         
-      </video>
+      </video> */}
+    {props.video}
+      
     </div>
   )
 }

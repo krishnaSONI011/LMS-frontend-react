@@ -14,7 +14,7 @@ import Admin from './admin/Admin';
 import Account from './pages/Account/Account';
 import LearnPortal from './pages/LearnPortal/LearnPortal';
 import NavbarHolder from './components/NavbarHolder';
-
+import "driver.js/dist/driver.css";
 function App() {
   
 

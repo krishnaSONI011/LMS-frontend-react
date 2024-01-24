@@ -7,8 +7,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../assests/logo.png'
 import { useAuth } from '../context/authContext';
 import { toast } from 'react-toastify';
+import {driver} from 'driver.js'
 const Navbar = props => {
+    const driverObj = driver({
+        showProgress: true,
+        
+        steps: [
+            { element: 'center', popover: { title: 'Welcome', description: 'This is a simple guide to our website ', side: "left", align: 'end' }},
+          { element: '#btn-enroll', popover: { title: 'Enroll Your Self', description: 'Here you can Enroll yourself by login or register yourSelf', side: "left", align: 'end' }},
+          {element:'#course-btn',popover:{title:'All Course',description:'here you can browse all our offer course',side:'left',align:'end'}}
+          
+        ]
+      });
+      React.useEffect(()=>{
 
+          driverObj.drive();
+      },[])
     const [auth, setAuth] = useAuth()
 
     const navi = useNavigate()
@@ -65,7 +79,7 @@ const Navbar = props => {
                             theme: 'dark',
                         });
                     }} className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`}>Learn</button>
-                    <button className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`} onClick={() => navi('/courses')}>Courses
+                    <button id='course-btn' className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`} onClick={() => navi('/courses')}>Courses
                     </button>
                     <button className={`p-3 active:scale-95 duration-200 ${dark ? 'hover:bg-slate-500' : 'hover:bg-gray-100'}  rounded-full `} onClick={() => dark ? setMode(false) : setMode(true)}>
                         {
@@ -82,7 +96,7 @@ const Navbar = props => {
                             <div>
                                 <Userbar />
 
-                            </div> </> : <> <button className=' active:scale-95 duration-200 bg-[#e6f7ff] px-5 rounded-2xl  ' onClick={() => navi('/auth/ask-user/email')}>
+                            </div> </> : <> <button id='btn-enroll' className=' active:scale-95 duration-200 bg-[#e6f7ff] px-5 rounded-2xl  ' onClick={() => navi('/auth/ask-user/email')}>
                                 Enroll
                             </button></>
                     }
