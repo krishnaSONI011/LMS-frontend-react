@@ -1,17 +1,30 @@
 import React from 'react'
 import image from '../../assests/developer-2.jpg'
 import { HiStar } from "react-icons/hi";
-
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 const Single = ()=>{
+    const [data,setData] = useState([])
+    const {coursesSlug} = useParams()
+    const getData = async ()=>{
+        const response = await axios.get(`http://localhost:8080/api/course/get/${coursesSlug}`)
+        setData(response.data.course)
+        console.log(response.data)
+    }
+    useEffect(()=>{
+        getData()
+    },[])
     return(
         <>
         <div className='pt-20 mx-0 md:mx-32'>
             <div className='p-4'>
                     <div className='flex '>
                         <div className='w-3/4'>
-                            <p className='text-blue-600 text-lg font-1 my-7 '>FOR BEGINNERS AND EXPERIENCED LEARNERS</p>
-                            <p className='text-4xl font-semibold' >Full Stack Web Development Course — MERN Stack</p>
-                            <p className='text-lg my-7 font-1'>Learn to build entire web applications from start to finish on one of the most versatile tech stacks : MongoDB, Express.js, React.js and Node.js (MERN stack)</p>
+                            <p className='text-blue-600 text-lg font-1 my-7 '>{data.subTitle}</p>
+                            <p className='text-4xl font-semibold' >{data.title}</p>
+                            <p className='text-lg my-7 font-1'>{data.description}</p>
                             <div className='text-center'>
                                
                                 <button className='text-xl font-3 duration-200 active:scale-95 w-52 py-5 rounded-lg  text-white bg-blue-500'>Enroll</button>
@@ -19,7 +32,7 @@ const Single = ()=>{
                         </div>
 
                         <div className='p-3 flex items-center   '>
-                            <img src={image} alt="" className='w-full rounded'/>
+                            <img src={`http://localhost:8080/${data.logo}`} alt="" className='w-[600px] rounded'/>
                         </div>
 
                     </div>
