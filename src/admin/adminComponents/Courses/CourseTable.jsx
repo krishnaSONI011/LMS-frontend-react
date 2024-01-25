@@ -7,7 +7,12 @@ const CourseTable = ()=>{
     async function fetchCourseData(){
       try{
         const response = await axios.get('http://localhost:8080/api/course/get')
-        setData(response.data.courses)
+        
+          
+          setData(response.data.courses)
+        
+       
+
       }catch(err){
         console.log(err)
       }
@@ -28,12 +33,14 @@ const CourseTable = ()=>{
               <th scope="col" colSpan={2} className="text-center">Action</th>
               <th scope="col"  className="text-center">Status</th>
             </tr>
-          </thead>
+          </thead> 
           <tbody>
-            {data.map((m,index)=>(
-                <TableData key={m._id} sr={index +1} name={m.title} about={m.description} status = {m.status}/>
+            {
+             data.map((m,index)=>(
+                <TableData key={m._id} id={m._id} sr={index +1} name={m.title} about={m.description} status = {m.live}/>
               
-            ))}
+            )) 
+          }
           </tbody>
         </table>
 </>

@@ -7,11 +7,25 @@ const AddCourse = ()=>{
     const {search} = useLocation();
     const queryParams = new URLSearchParams(search)
     const page_id = queryParams.get('page_id') 
+    const course_id = queryParams.get('course_id') 
     const[courseTitle,setCourseTitle] = useState('')
     const[courseSubtitle,setCourseSubtitle] = useState('');
     const[description,setDescription] = useState('')
     const [ image,setImage] = useState(null)
 
+    async function postTopicData(){
+      try{
+        const topic = courseTitle
+        const videoEmbed = description
+        const courseId = course_id
+          const response = await axios.post('http://localhost:8080/api/topics/add-topic',{
+              courseId,topic,videoEmbed
+          })
+          toast.success(response.data.message)
+      }catch(e){
+        console.log(e)
+      }
+    }
     async function postCourseData() {
         try {
           const formData = new FormData();
@@ -98,7 +112,7 @@ id="formFile" />
                 <button onClick={()=>{page_id==='topic'?navi('/admin/home/topics/loding'):navi('/admin/home/course')}} className='active:scale-95 duration-150 bg-blue-600 p-2 text-white rounded hover:bg-blue-500'>
                     back
                 </button>
-                <button onClick={postCourseData}  className='active:scale-95 duration-150 bg-green-600 p-2 text-white rounded hover:bg-green-500 ml-6'>
+                <button onClick={page_id === 'topic' ? postTopicData : postCourseData}  className='active:scale-95 duration-150 bg-green-600 p-2 text-white rounded hover:bg-green-500 ml-6'>
                     Add
                 </button>
             </div>

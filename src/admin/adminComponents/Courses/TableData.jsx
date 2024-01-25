@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 export default function TableData(props) {
   return (
     <>
@@ -8,10 +8,10 @@ export default function TableData(props) {
         <td className='whitespace-nowrap px-6 py-4'>{props.name}</td>
         <td className='whitespace-nowrap px-6 py-4'>{props.about} </td>
         {
-          props.status ? <><td className='whitespace-nowrap text-center'><button className='p-2 active:scale-95 duration-150 text-white bg-blue-600 rounded '>Update</button></td>
+          props.status ? <><td className='whitespace-nowrap text-center'><Link to={`/admin/home/topics/${props.id}?status=${props.status}&name=${props.name}`}><button className='p-2 active:scale-95 duration-150 text-white bg-blue-600 rounded '>Update</button></Link></td>
           <td className='whitespace-nowrap '><button className='p-2 active:scale-95 duration-150 text-white bg-red-600 rounded '>Delete</button></td></>
           :
-          <td className='whitespace-nowrap text-center'><button className='p-2 active:scale-95 duration-150 text-white bg-blue-600 rounded '>Add subCourse</button></td>
+          <td className='whitespace-nowrap text-center'><Link to={`/admin/home/topics/${props.id}?status=${props.status}&name=${props.name}`}><button className='p-2 active:scale-95 duration-150 text-white bg-blue-600 rounded '>Add subCourse</button></Link></td>
         }
         
         <td className='whitespace-nowrap text-center '>{props.status ? <span className='bg-green-500 text-white p-1 rounded'>Live</span>: <span className='bg-red-500 text-white p-1 rounded ml-10'>Not Live</span>}</td>
