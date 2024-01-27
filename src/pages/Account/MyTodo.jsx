@@ -9,7 +9,7 @@ const MyTodo = (props) => {
     const id_todo = props.id;
     try {
       let response = await axios.delete(
-        `http://localhost:8080/api/todo/delete-todo/${id_todo}`
+        `https://lms-backend-production-fcd7.up.railway.app/api/todo/delete-todo/${id_todo}`
       );
       if (response) {
         toast.success(response.data.message , {

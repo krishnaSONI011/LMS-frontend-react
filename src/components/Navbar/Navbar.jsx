@@ -43,7 +43,7 @@ const Navbar = props => {
         else if (scroll === 0) toggleShadow(false)
     }
     return <>
-        <div className={`transition ${props.hider ? 'hidden' : ''} duration-200 ${shadow ? 'shadow' : 'shadow-none'} fixed w-screen ${dark ? 'bg-black' : 'bg-white'}`}>
+        <div className={`transition ${props.hider ? 'hidden' : ''} duration-200 ${shadow ? 'shadow' : 'shadow-none'} fixed w-screen ${dark ? 'bg-black' : 'bg-white'} z-10`}>
             <div className='flex p-3 items-center justify-between'>
 
 
@@ -57,8 +57,8 @@ const Navbar = props => {
 
                     <div>
                         <div className='flex items-center w-fit relative font-1'>
-                            <input type="text" className={`${dark ? 'bg-[#101426] border  text-white' : 'bg-gray-50 border-2'} hover:outline-blue-500 hover:outline-1  p-1 rounded-lg focus:outline-[#E1E2F6]`} placeholder='Search' />
-                            <LuSearch className={`absolute right-1 z-100 ${dark ? 'bg-slate-900 text-white' : 'bg-gray-50'} bg-gray-50 text-lg`} />
+                            <input type="text" className={`hidden md:block ${dark ? 'bg-[#101426] border  text-white' : 'bg-gray-50 border-2'} hover:outline-blue-500 hover:outline-1  p-1 rounded-lg focus:outline-[#E1E2F6]`} placeholder='Search' />
+                            <LuSearch className={`hidden md:block absolute right-1 z-100 ${dark ? 'bg-slate-900 text-white' : 'bg-gray-50'} bg-gray-50 text-lg`} />
                         </div>
                     </div>
 
@@ -92,7 +92,7 @@ const Navbar = props => {
 
                     </button>
                     {
-                        auth ? <>
+                        localStorage.getItem('auth') ? <>
                             <div>
                                 <Userbar />
 

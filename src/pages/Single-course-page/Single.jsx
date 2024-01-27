@@ -5,17 +5,56 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 const Single = ()=>{
     const [data,setData] = useState([])
+    const [loading, setLoading] = useState(false);
     const {coursesSlug} = useParams()
     const getData = async ()=>{
-        const response = await axios.get(`http://localhost:8080/api/course/get/${coursesSlug}`)
+        const response = await axios.get(`https://lms-backend-production-fcd7.up.railway.app/api/course/get/${coursesSlug}`)
         setData(response.data.course)
         console.log(response.data)
     }
     useEffect(()=>{
         getData()
     },[])
+    const enrollGetter = async ()=>{
+        try{
+            const userData = JSON.parse(localStorage.getItem('auth'))
+            if(!userData) return toast.error('login first',{
+                position: 'bottom-center',
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'dark',
+              })
+            const  userId = userData.id
+            setLoading(true);
+            const courseId = data._id
+            const response = await axios.post('https://lms-backend-production-fcd7.up.railway.app/api/enroll/new-enroll',{
+                userId,courseId
+            })
+            console.log(response.data)
+             toast.success(response.data.message,{
+                position: 'bottom-center',
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'dark',
+              })
+        }catch(e){
+            console.log(e)
+        }
+        finally{
+            setLoading(false)
+        }
+    }
     return(
         <>
         <div className='pt-20 mx-0 md:mx-32'>
@@ -26,13 +65,16 @@ const Single = ()=>{
                             <p className='text-4xl font-semibold' >{data.title}</p>
                             <p className='text-lg my-7 font-1'>{data.description}</p>
                             <div className='text-center'>
-                               
-                                <button className='text-xl font-3 duration-200 active:scale-95 w-52 py-5 rounded-lg  text-white bg-blue-500'>Enroll</button>
+                               {/* button for enroll  */}
+                                {/* <button onClick={enrollGetter} className='text-xl font-3 duration-200 active:scale-95 w-52 py-5 rounded-lg  text-white bg-blue-500'>Enroll</button> */}
+                                <button disabled={loading} onClick={enrollGetter} className='text-xl font-3 duration-200 active:scale-95 w-52 py-5 rounded-lg text-white bg-blue-500'>
+                            {loading ? 'Enrolling...' : 'Enroll'}
+                        </button>
                             </div>
                         </div>
 
                         <div className='p-3 flex items-center   '>
-                            <img src={`http://localhost:8080/${data.logo}`} alt="" className='w-[600px] rounded'/>
+                            <img src={`https://lms-backend-production-fcd7.up.railway.app/${data.logo}`} alt="" className='w-[600px] rounded'/>
                         </div>
 
                     </div>

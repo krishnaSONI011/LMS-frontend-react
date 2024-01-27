@@ -13,7 +13,7 @@ const TodoWriter = (props) => {
         const userId = user.id;
 
         const response = await axios.post(
-          "http://localhost:8080/api/todo/get-todo",
+          "https://lms-backend-production-fcd7.up.railway.app/api/todo/get-todo",
           { userId }
         );
 

@@ -18,7 +18,7 @@ const AddCourse = ()=>{
         const topic = courseTitle
         const videoEmbed = description
         const courseId = course_id
-          const response = await axios.post('http://localhost:8080/api/topics/add-topic',{
+          const response = await axios.post('https://lms-backend-production-fcd7.up.railway.app/api/topics/add-topic',{
               courseId,topic,videoEmbed
           })
           toast.success(response.data.message)
@@ -35,7 +35,7 @@ const AddCourse = ()=>{
           formData.append('description', description); // Use the correct field names
       
           const response = await axios.post(
-            'http://localhost:8080/api/course/add-course',
+            'https://lms-backend-production-fcd7.up.railway.app/api/course/add-course',
             formData,
             {
               headers: {

@@ -5,7 +5,7 @@ const Courses = ()=>{
     const [data,setData] = useState([])
     const getCourse = async ()=>{
         try{
-            const response = await axios.get('http://localhost:8080/api/course/get-frontend')
+            const response = await axios.get('https://lms-backend-production-fcd7.up.railway.app/api/course/get-frontend')
             setData(response.data.courses)
 
         }catch(e){
