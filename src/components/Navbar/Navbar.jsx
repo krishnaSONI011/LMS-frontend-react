@@ -9,20 +9,7 @@ import { useAuth } from '../context/authContext';
 import { toast } from 'react-toastify';
 import {driver} from 'driver.js'
 const Navbar = props => {
-    const driverObj = driver({
-        showProgress: true,
-        
-        steps: [
-            { element: 'center', popover: { title: 'Welcome', description: 'This is a simple guide to our website ', side: "left", align: 'end' }},
-          { element: '#btn-enroll', popover: { title: 'Enroll Your Self', description: 'Here you can Enroll yourself by login or register yourSelf', side: "left", align: 'end' }},
-          {element:'#course-btn',popover:{title:'All Course',description:'here you can browse all our offer course',side:'left',align:'end'}}
-          
-        ]
-      });
-      React.useEffect(()=>{
-
-          driverObj.drive();
-      },[])
+    
     const [auth, setAuth] = useAuth()
 
     const navi = useNavigate()
@@ -68,7 +55,7 @@ const Navbar = props => {
 
                 <div className='font-1 flex justify-around w-96'>
                     <button onClick={() => {
-                        auth ? navi('/learn') : toast.warning('Login First', {
+                        localStorage.getItem('auth') ? navi('/learn') : toast.warning('Login First', {
                             position: 'bottom-center',
                             autoClose: 5000,
                             hideProgressBar: false,

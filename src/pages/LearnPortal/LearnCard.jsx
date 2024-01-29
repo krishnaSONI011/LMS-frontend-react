@@ -1,6 +1,6 @@
 import React from "react";
 import image from '../../assests/card.png'
-const LearnCard = ()=>{
+const LearnCard = props=>{
     return(
         <>
         {/* parent div  */}
@@ -9,17 +9,17 @@ const LearnCard = ()=>{
                 <div className="flex flex-col items-center justify-evenly">
                     {/* image div */}
                     <div>
-                        <img src={image} alt="" className="w-40"/>
+                        <img src={`https://lms-backend-production-fcd7.up.railway.app/${props.image}`} alt="" className="w-40"/>
                     </div>
                     {/* image div end */}
                     {/* Heading div */}
                     <div className="my-2">
-                        <h1 className="font-1 font-bold">Name of the Course</h1>
+                        <h1 className="font-1 font-bold">{props.name}</h1>
                     </div>
                     {/* Heading div end */}
                     {/* about div */}
                     <div className="my-2">
-                        <p className="text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod incidunt dolor, et ea ex ut libero voluptatibus atque vel quas </p>
+                        <p className="text-justify">{props.about} </p>
                     </div>
                     {/* about div end */}
                     {/* status bar and its percents */}

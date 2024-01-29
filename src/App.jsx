@@ -15,9 +15,23 @@ import Account from './pages/Account/Account';
 import LearnPortal from './pages/LearnPortal/LearnPortal';
 import NavbarHolder from './components/NavbarHolder';
 import "driver.js/dist/driver.css";
+import {driver} from 'driver.js'
 function App() {
   
+  const driverObj = driver({
+    showProgress: true,
+    
+    steps: [
+        { element: 'center', popover: { title: 'Welcome', description: 'This is a simple guide to our website ', side: "left", align: 'end' }},
+      { element: '#btn-enroll', popover: { title: 'Enroll Your Self', description: 'Here you can Enroll yourself by login or register yourSelf', side: "left", align: 'end' }},
+      {element:'#course-btn',popover:{title:'All Course',description:'here you can browse all our offer course',side:'left',align:'end'}}
+      
+    ]
+  });
+  React.useEffect(()=>{
 
+      driverObj.drive();
+  },[])
 
   return (
     <>
