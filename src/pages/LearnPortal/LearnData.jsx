@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import LearnCard from './LearnCard';
+import NotHave from './NotHave';
 
 const LearnData = () => {
     const [course, setCourseData] = useState([]);
@@ -11,13 +12,13 @@ const LearnData = () => {
             setLoading(true)
             const user = JSON.parse(localStorage.getItem('auth'));
             const userId = user.id;
-            const response = await axios.get(`https://lms-backend-production-fcd7.up.railway.app/api/enroll/get-enroll/${userId}`);
+            const response = await axios.get(`http://localhost:8080/api/enroll/get-enroll/${userId}`);
             setCourseData(response.data.enrolls);
 
             // Use Promise.all to wait for all axios requests to complete
             const responseData = await Promise.all(
                 response.data.enrolls.map(async (m) => {
-                    const courseResponse = await axios.get(`https://lms-backend-production-fcd7.up.railway.app/api/course/get-course/${m.courseId}`);
+                    const courseResponse = await axios.get(`http://localhost:8080/api/course/get-course/${m.courseId}`);
                     return courseResponse.data.course;
                 })
             );
@@ -40,11 +41,11 @@ const LearnData = () => {
             {/* parent div */}
             <div className='w-full'>
                 {/* card container  */}
-                <div className='flex p-3 justify-evenly flex-wrap '>
-                    {loading ? <><div className='h-screen flex items-center w-full justify-center'><h1 className='  p-2 rounded bg-blue-500 text-white text-xl '>Loading...</h1></div></> : data.map((courseData) => (
-                        <LearnCard key={courseData._id} name={courseData.title} image={courseData.logo} about={courseData.description} />
-                    ))}
-                </div>
+            {data.length > 0 ? <div className='flex p-3 justify-evenly flex-wrap '>
+                {loading ? <><div className='h-screen flex items-center justify-center'><p className='p-5 border-4 border-blue-500 border-b-0  animate-spin rounded-full'></p></div></> : data.map((courseData) => (
+                    <LearnCard key={courseData._id}  id={courseData._id} name={courseData.title} image={courseData.logo} about={courseData.description} />
+                ))}
+            </div> : <NotHave/>}
                 {/* card container end */}
             </div>
             {/* parent div end*/}

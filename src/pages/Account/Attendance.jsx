@@ -11,7 +11,7 @@ const Attendance = () => {
       try{
         const user = JSON.parse(localStorage.getItem('auth'));
         const userId = user.id
-        const response = await axios.get(`https://lms-backend-production-fcd7.up.railway.app/api/attendence/get-attendence/${userId}`);
+        const response = await axios.get(`http://localhost:8080/api/attendence/get-attendence/${userId}`);
         if(response.data.status) setData(response.data.attendence)
         else console.log(response.data)
       }catch(err){

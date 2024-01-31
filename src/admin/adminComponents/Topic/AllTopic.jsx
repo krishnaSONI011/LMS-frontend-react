@@ -14,7 +14,7 @@ const AllTopic = () => {
     const name = queryParams.get('name') 
   const { courseSlug } = useParams();
    async function getTopics(){
-    const response = await axios.get(`https://lms-backend-production-fcd7.up.railway.app/api/topics/get-topic/${courseSlug}`)
+    const response = await axios.get(`http://localhost:8080/api/topics/get-topic/${courseSlug}`)
     setData(response.data.data)
     toast.success(response.data.message)
    }
@@ -22,7 +22,7 @@ const AllTopic = () => {
    async function setLive() {
     try {
       const response = await axios.put(
-        `https://lms-backend-production-fcd7.up.railway.app/api/course/update-course/${status === 'true' ? 'false' : 'true'}/${courseSlug}`
+        `http://localhost:8080/api/course/update-course/${status === 'true' ? 'false' : 'true'}/${courseSlug}`
       );
       console.log(response.data);
 

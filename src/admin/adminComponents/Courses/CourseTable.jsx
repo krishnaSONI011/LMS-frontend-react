@@ -1,12 +1,13 @@
 import React from 'react'
 import TableData from './TableData';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 const CourseTable = ()=>{
   const [data,setData] = React.useState([])
   
     async function fetchCourseData(){
       try{
-        const response = await axios.get('https://lms-backend-production-fcd7.up.railway.app/api/course/get')
+        const response = await axios.get('http://localhost:8080/api/course/get')
         
           
           setData(response.data.courses)
@@ -15,6 +16,7 @@ const CourseTable = ()=>{
 
       }catch(err){
         console.log(err)
+        toast.error(err.data)
       }
     }
     React.useEffect(()=>{

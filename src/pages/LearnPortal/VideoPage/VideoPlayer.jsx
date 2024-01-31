@@ -1,16 +1,39 @@
+import axios from 'axios'
 import React from 'react'
+import { useState } from 'react'
 
 const VideoPlayer = (props) => {
+  const [data,setData] = useState([])
+  const videoId = props.video
+  const [loading,setLoading] = useState(false)
+  async function getVideo(){
+    try{  
+      setLoading(true)
+      const response = await axios.get(`http://localhost:8080/api/topics/get/${props.video}`)
+        setData(response.data.topic)
+    }catch(e){
+      console.log(e)
+    }finally{
+      setLoading(false)
+    }
+  }
+  React.useEffect(()=>{getVideo()},[videoId])
   return (
     <div>
-       {/* <video   controls className='w-full h-[92vh]'>
+       {loading ? <><div className='h-screen w-full flex items-center justify-center'><p className='p-5 border-4 border-blue-500 border-b-0  animate-spin rounded-full'></p></div></> :<video   controls className='w-full h-[92vh]'>
         <source
-          src={'https://ln5.sync.com/dl/30a9cad70/eakk6acv-ummdgb6q-7um92nu8-yn68eifa'}
+          src={`http://localhost:8080/${data.videoEmbed}`}
           type="video/mp4"
         />
         
-      </video> */}
-    {props.video}
+      </video>}
+      {/* {
+        loading ? <><div className='h-screen w-full flex items-center justify-center'><p className='p-5 border-4 border-blue-500 border-b-0  animate-spin rounded-full'></p></div></> :<div className='w-full flex justify-center items-center'>
+        <p  dangerouslySetInnerHTML={{ __html: data.videoEmbed }}></p>
+</div>
+      } */}
+      
+    
       
     </div>
   )

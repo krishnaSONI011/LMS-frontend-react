@@ -22,7 +22,7 @@ const Emailinputer = () => {
                 });
                 return;
             }
-                const response = await axios.post('https://lms-backend-production-fcd7.up.railway.app/api/user/email-verify',{email});
+                const response = await axios.post('http://localhost:8080/api/user/email-verify',{email});
                 if(response.data.status){
                         localStorage.setItem('tempData',JSON.stringify(response.data.user))
                         navi(`/auth/ask-user/verify-user/${email}`);

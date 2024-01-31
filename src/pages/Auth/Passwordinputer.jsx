@@ -14,7 +14,7 @@ const Passwordinputer = ()=>{
     const name = JSON.parse(localStorage.getItem('tempData'))
     async function login(){
         try{
-            const response = await axios.post('https://lms-backend-production-fcd7.up.railway.app/api/user/login',{email,password});
+            const response = await axios.post('http://localhost:8080/api/user/login',{email,password});
             if(response.data.status){
                 localStorage.setItem('auth', JSON.stringify(response.data.user));
         navi('/');
@@ -34,7 +34,7 @@ const Passwordinputer = ()=>{
         const day = date.getDate().toString(); 
         const year = date.getFullYear().toString(); 
         const month = (date.getMonth() + 1).toString();
-        const attadenceResponse = await axios.post('https://lms-backend-production-fcd7.up.railway.app/api/attendence/send-attendence',{
+        const attadenceResponse = await axios.post('http://localhost:8080/api/attendence/send-attendence',{
             userId,
             year,
             month,

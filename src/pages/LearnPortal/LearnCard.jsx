@@ -1,6 +1,11 @@
 import React from "react";
 import image from '../../assests/card.png'
+import { useNavigate } from "react-router-dom";
 const LearnCard = props=>{
+    const navi = useNavigate()
+    const toGo = ()=>{
+    navi(`/learn/video/${props.id}?video_id=''}`)
+    }
     return(
         <>
         {/* parent div  */}
@@ -9,7 +14,7 @@ const LearnCard = props=>{
                 <div className="flex flex-col items-center justify-evenly">
                     {/* image div */}
                     <div>
-                        <img src={`https://lms-backend-production-fcd7.up.railway.app/${props.image}`} alt="" className="w-40"/>
+                        <img src={`http://localhost:8080/${props.image}`} alt="" className="w-40"/>
                     </div>
                     {/* image div end */}
                     {/* Heading div */}
@@ -36,7 +41,7 @@ const LearnCard = props=>{
                     {/* status bar and its percents end*/}
                     {/* button div */}
                     <div className="flex justify-between my-3">
-                    <button className=' p-1 font-1 text-white bg-[#fe9b71] rounded active:scale-95 duration-150'>Go to course</button>
+                    <button onClick={toGo} className=' p-1 font-1 text-white bg-[#fe9b71] rounded active:scale-95 duration-150'>Go to course</button>
                 <button className='mx-3 p-2 font-1 text-white bg-red-500 rounded hover:bg-red-600 active:scale-95 duration-150'>Remove</button>
                     </div>
                     {/* button div end */}

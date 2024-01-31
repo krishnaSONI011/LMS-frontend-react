@@ -18,7 +18,7 @@ const[data,setData] = useState([])
 
   async function createUser() {
     try {
-      const response = await axios.post('https://lms-backend-production-fcd7.up.railway.app/api/user/add-user', {
+      const response = await axios.post('http://localhost:8080/api/user/add-user', {
         firstname,
         lastname,
         email,
@@ -44,7 +44,7 @@ const[data,setData] = useState([])
         const day = date.getDate().toString(); 
         const year = date.getFullYear().toString(); 
         const month = (date.getMonth() + 1).toString();
-        const attadenceResponse = await axios.post('https://lms-backend-production-fcd7.up.railway.app/api/attendence/send-attendence',{
+        const attadenceResponse = await axios.post('http://localhost:8080/api/attendence/send-attendence',{
             userId,
             year,
             month,
