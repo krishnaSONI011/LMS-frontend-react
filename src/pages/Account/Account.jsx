@@ -1,5 +1,6 @@
 import React from 'react'
-import Mycourse from './Mycourse';
+import Friends from './Friends';
+
 import Todo from './Todo';
 import UserProfile from './UserProfile';
 
@@ -8,7 +9,7 @@ const Account = ()=>{
         <>
         <div className='w-screen flex p-2 pt-20'>
             <UserProfile/>
-            <Mycourse/>
+            <Friends/>
             <Todo/>
         </div>
         </>

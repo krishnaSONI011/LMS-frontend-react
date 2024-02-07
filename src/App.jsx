@@ -16,6 +16,7 @@ import LearnPortal from './pages/LearnPortal/LearnPortal';
 import NavbarHolder from './components/NavbarHolder';
 import "driver.js/dist/driver.css";
 import {driver} from 'driver.js'
+import Mail from './pages/Mail/Mail';
 function App() {
   
   const driverObj = driver({
@@ -53,6 +54,7 @@ function App() {
               <Route path='/courses' element={<Courses />} />
               <Route path='/courses/:coursesSlug' element={<Single />} />
               <Route path='/account' element={<Account />} />
+              <Route path='/mail/*' element={<Mail />} />
             </Routes>
             <ToastContainer />
           </AuthProvider>

@@ -18,9 +18,7 @@ const Attendance = () => {
         console.log(err)
       }
      }
-     React.useEffect(()=>{
-      console.log(data)
-     },[data])
+     
     const [month,setMonth] = useState('');
     function monthSelector(){
         const date = new Date();
