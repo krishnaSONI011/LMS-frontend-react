@@ -1,8 +1,14 @@
-import React from "react";
+import React,{useEffect} from "react";
 import image1 from '../../assests/app-mockup-2.svg'
 import image2 from '../../assests/our-team.svg'
 import image3 from '../../assests/ad.svg'
+import {  useNavigate } from "react-router-dom";
 const FirstSection = () => {
+    const navi = useNavigate()
+    function checkForLogin(){
+        if(!localStorage.getItem('auth')) navi('/')
+    }
+    useEffect(()=>{checkForLogin()},[])
     return <>
         <div className="pt-20  md:mx-32 mx-10 ">
             <div className="flex-col-reverse md:flex-row flex items-center justify-between">

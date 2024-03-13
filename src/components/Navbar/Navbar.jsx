@@ -8,6 +8,7 @@ import logo from '../../assests/logo.png'
 import { useAuth } from '../context/authContext';
 import { toast } from 'react-toastify';
 import {driver} from 'driver.js'
+import { LuMail } from "react-icons/lu";
 const Navbar = props => {
     
     const [auth, setAuth] = useAuth()
@@ -68,6 +69,13 @@ const Navbar = props => {
                     }} className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`}>Learn</button>
                     <button id='course-btn' className={` font-semibold hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200  ${dark ? 'text-white' : 'text-gray-600'}`} onClick={() => navi('/courses')}>Courses
                     </button>
+                    <div className='flex items-center hover:bg-gray-100 px-5 rounded-2xl active:scale-95 duration-200 relative'>
+                        <span className='bg-red-400 p-1 rounded-full absolute right-4 top-3'></span>
+                    <button id='course-btn' className={` font-semibold text-xl  ${dark ? 'text-white' : 'text-gray-600'}`} onClick={() => navi('/mail/all-mail')}><LuMail />
+
+                    </button>
+                    </div>
+                    
                     <button className={`p-3 active:scale-95 duration-200 ${dark ? 'hover:bg-slate-500' : 'hover:bg-gray-100'}  rounded-full `} onClick={() => dark ? setMode(false) : setMode(true)}>
                         {
                             dark ?

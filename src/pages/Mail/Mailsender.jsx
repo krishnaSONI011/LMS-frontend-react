@@ -22,12 +22,13 @@ const Mailsender = () => {
 useEffect(()=>{
   getReciversData()
 },[])
+
   return (
     <div className='flex'>
   {
     page_id === '0' ? 
     <MailerProfile online={reciverData.online} name={reciverData.firstname + ' ' +reciverData.lastname }  email={reciverData.email}/> : <span></span>}
-      <Mailwriter page_id={page_id}/>
+      <Mailwriter page_id={page_id} email_to={reciverData.email}/>
     </div>
   )
 }
