@@ -1,19 +1,21 @@
 import React from 'react'
 import profile from '../../assests/avatar5.png'
-const UserProfile = ()=>{
+
+const UserProfile = (props)=>{
   
     const auth = JSON.parse(localStorage.getItem('auth'))
     
     
     return(
         <>
+        
         {/* parent div */}
         <div className='p-2 w-96'>
             {/* account div */}
             <div className='flex flex-col items-center'>
                 {/* image div */}
                 <div className=''>
-                    <img src={profile} alt="" className='hover:brightness-90 cursor-pointer w-32 rounded-full'/>
+                    <img src={profile} alt="" className='hover:brightness-90 cursor-pointer w-32 rounded-full' onClick={()=> props.setBox(true)}/>
                 </div>
                 {/* image div end */}
                 {/* data div */}
