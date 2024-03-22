@@ -39,7 +39,7 @@ const Friends = () => {
             loading ?<div className='flex justify-center  items-center'>
             <p className='p-5 border border-b-hidden border-blue-500 rounded-full animate-spin'></p>
           </div>  :  data.map((user)=>(
-              <FriendsTab key={user._id} id={user._id} name={user.firstname + ' '+user.lastname } online={user.online}/>
+              <FriendsTab avatar ={user.avatar} key={user._id} id={user._id} name={user.firstname + ' '+user.lastname } online={user.online}/>
             ))
           }
             

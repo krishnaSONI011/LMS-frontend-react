@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
-import ava from '../../assests/avatar5.png'
+
 import Dropdown from './Dropdown';
 
 const Userbar = () => {
     const [dropToggle,SetdropToggle] = useState(false)
+    const user = JSON.parse(localStorage.getItem("auth"))
+    const ava = user.avatar
     return (
         <>
             <div className='relative'>

@@ -1,11 +1,66 @@
+import axios from 'axios'
 import React from 'react'
-import profile from '../../assests/avatar5.png'
+import { toast } from 'react-toastify'
+
 
 const UserProfile = (props)=>{
   
     const auth = JSON.parse(localStorage.getItem('auth'))
+    const profile = auth.avatar
+    const [editable, setEditable] = React.useState(false)
+    const [name,setName] = React.useState(auth ? auth.firstname + " " + auth.lastname : "")
+    const [email,setEmail] = React.useState(auth ? auth.email: "")
+    const handle = ()=>{
+        setEditable( !editable)
+        toast.warning(editable ? 'editing disable' : 'editing enable',{
+            position: 'bottom-center',
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'dark',
+        })
+    }
+
+   async function saveData(){
     
-    
+            try{
+                const userName = name.split(" ")
+                const firstname = userName[0]
+                const lastnameFunc =(userName)=>{
+                        let name = " "
+                            for(let i=1 ; i<userName.length; i++){
+                                name = name + userName[i]
+                                name = name + " "
+                            }
+                            return name
+                }
+                const lastname = lastnameFunc(userName)
+                
+                const userId = auth.id
+                const response = await axios.post('http://localhost:8080/api/user/update-user',{
+                    userId,firstname,lastname,email
+                })
+                if(response.data.status){ localStorage.setItem('auth',JSON.stringify(response.data.user))
+                    toast.success(response.data.message,{
+                        position: 'bottom-center',
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'dark',
+                    })
+                    setEditable(false)
+            }
+                else toast.error(response.data.message)
+            }catch(e){
+                console.error(e)
+            }
+    }
     return(
         <>
         
@@ -22,14 +77,16 @@ const UserProfile = (props)=>{
                 <div>
                     {/* name div */}
                     <div className='font-1 font-semibold mt-7 text-lg border-b-2 text-center p-2'>
-                        {auth.firstname + ' ' + auth.lastname}
+                        <input disabled={editable ? false : true} onChange={(e)=>setName(e.target.value)} type={`text`} className={`text-center  bg-white ${editable ? "outline outline-1" : ""}`} value={name}/>
+                      
                     </div>
                     {/* name div end */}
                     {/* other data div */}
                     <div>
                         {/* email div */}
                         <div className='font-1 border-b-2 p-2 text-center'>
-                                {auth.email}
+                        <input disabled={editable ? false : true} onChange={(e)=>setEmail   (e.target.value)} type={`text`} className={`text-center  bg-white ${editable ? "outline outline-1" : ""}`} value={email}/>
+                                
                         </div>
                         {/* email div end */}
                         {/* address div */}
@@ -42,10 +99,14 @@ const UserProfile = (props)=>{
                 </div>
                 {/* data div end */}
                 {/* button div */}
-                <div className='mt-7'>
-                    <button className='bg-[#f9a682] p-2 rounded text-white font-1 text-lg active:scale-95 duration-150'>
+                <div className='mt-7 flex justify-evenly w-96'>
+                    <button onClick={handle} className='bg-[#f9a682] p-2 rounded text-white font-1 text-lg active:scale-95 duration-150'>
                         edit
                     </button>
+                    {editable ? <button onClick={saveData} className={`bg-[#82a0f9] p-2 rounded text-white font-1 text-lg active:scale-95 duration-150 `}>
+                        save
+                    </button> : ""}
+
                 </div>
                 {/* button div end */}
             </div>
