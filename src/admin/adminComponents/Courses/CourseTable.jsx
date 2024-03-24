@@ -7,7 +7,7 @@ const CourseTable = ()=>{
   
     async function fetchCourseData(){
       try{
-        const response = await axios.get('http://localhost:8080/api/course/get')
+        const response = await axios.get('https://lms-backend-1-q2w4.onrender.com/api/course/get')
         
           
           setData(response.data.courses)

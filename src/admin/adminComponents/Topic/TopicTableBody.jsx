@@ -9,7 +9,7 @@ const TopicTableBody = (props) => {
         <td className='' >
         <video   controls className='w-80 '>
         <source
-          src={`http://localhost:8080/${props.video}`}
+          src={`https://lms-backend-1-q2w4.onrender.com/${props.video}`}
           type="video/mp4"
         />
         

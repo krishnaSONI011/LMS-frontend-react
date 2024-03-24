@@ -7,14 +7,14 @@ import { toast } from 'react-toastify'
 import axios from "axios";
 
 const Dropdown = () => {
-    const [auth, setAuth] = useAuth();
+    const [ setAuth] = useAuth();
     const navi = useNavigate();
 
     const logout = async () => {
         try {
             const user = JSON.parse(localStorage.getItem('auth'));
             const userId = user.id;
-            const response = await axios.post('http://localhost:8080/api/user/logout', { userId });
+            const response = await axios.post('https://lms-backend-1-q2w4.onrender.com/api/user/logout', { userId });
 
             toast.success(response.data.message, {
                 position: 'bottom-center',

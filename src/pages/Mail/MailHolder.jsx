@@ -7,7 +7,7 @@ const MailHolder = () => {
     try{
       const user = JSON.parse(localStorage.getItem('auth'))
       const userMailId = user.email
-      const response = await axios.get(`http://localhost:8080/api/mail/get-mails/${userMailId}`)
+      const response = await axios.get(`https://lms-backend-1-q2w4.onrender.com/api/mail/get-mails/${userMailId}`)
       setData(response.data.userMails)
     }catch(e){
       console.log(e)

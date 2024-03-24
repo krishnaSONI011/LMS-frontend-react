@@ -9,7 +9,7 @@ const VideoPlayer = (props) => {
   async function getVideo(){
     try{  
       setLoading(true)
-      const response = await axios.get(`http://localhost:8080/api/topics/get/${props.video}`)
+      const response = await axios.get(`https://lms-backend-1-q2w4.onrender.com/api/topics/get/${props.video}`)
         setData(response.data.topic)
     }catch(e){
       console.log(e)
@@ -22,7 +22,7 @@ const VideoPlayer = (props) => {
     <div>
        {loading ? <><div className='h-screen w-full flex items-center justify-center'><p className='p-5 border-4 border-blue-500 border-b-0  animate-spin rounded-full'></p></div></> :<video   controls className='w-full h-[92vh]'>
         <source
-          src={`http://localhost:8080/${data.videoEmbed}`}
+          src={`https://lms-backend-1-q2w4.onrender.com/${data.videoEmbed}`}
           type="video/mp4"
         />
         

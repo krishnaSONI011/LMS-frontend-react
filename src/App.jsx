@@ -54,7 +54,7 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/courses' element={<Courses />} />
               <Route path='/courses/:coursesSlug' element={<Single />} />
-              <Route path='/account' element={<Account />} />
+              <Route path='/account/*' element={<Account />} />
               <Route path='/mail/*' element={<Mail />} />
             </Routes>
             <ToastContainer />

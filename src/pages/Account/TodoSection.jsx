@@ -12,11 +12,11 @@ const TodoSection = ()=>{
         const year = today.getFullYear();
         return date+ '/'+month+'/'+year
     }
-    const [date,setDate] = React.useState(getDate())
+    const [date] = React.useState(getDate())
     return (
         <>
         {/* parent div */}
-        <div className='border border-black rounded w-4/6 mt-7 flex flex-col  justify-center'>
+        <div className='border border-black rounded w-100% mt-7 flex flex-col  justify-center'>
 
        
         {/* todo inputer */}

@@ -12,13 +12,13 @@ const LearnData = () => {
             setLoading(true)
             const user = JSON.parse(localStorage.getItem('auth'));
             const userId = user.id;
-            const response = await axios.get(`http://localhost:8080/api/enroll/get-enroll/${userId}`);
+            const response = await axios.get(`https://lms-backend-1-q2w4.onrender.com/api/enroll/get-enroll/${userId}`);
             setCourseData(response.data.enrolls);
 
             // Use Promise.all to wait for all axios requests to complete
             const responseData = await Promise.all(
                 response.data.enrolls.map(async (m) => {
-                    const courseResponse = await axios.get(`http://localhost:8080/api/course/get-course/${m.courseId}`);
+                    const courseResponse = await axios.get(`https://lms-backend-1-q2w4.onrender.com/api/course/get-course/${m.courseId}`);
                     return courseResponse.data.course;
                 })
             );

@@ -8,7 +8,7 @@ const {id} = useParams()
 const getMail =async ()=>{
   try{
     const mailId = id
- const response = await axios.get(`http://localhost:8080/api/mail/single-mail/${mailId}`)
+ const response = await axios.get(`https://lms-backend-1-q2w4.onrender.com/api/mail/single-mail/${mailId}`)
  setMail(response.data.userMails)
   }catch(e){
     console.log(e)

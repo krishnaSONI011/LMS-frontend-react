@@ -16,7 +16,7 @@ const UserAvatar = (props) => {
         const user = JSON.parse(localStorage.getItem('auth'))
         const userId = user.id
         try {
-            const response =await axios.post("http://localhost:8080/api/user/update-avatar",{
+            const response =await axios.post("https://lms-backend-1-q2w4.onrender.com/api/user/update-avatar",{
                 userId,
                 avatarImg:avatarImages[active]
             })

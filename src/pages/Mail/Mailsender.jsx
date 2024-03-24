@@ -13,7 +13,7 @@ const Mailsender = () => {
   async function getReciversData(){
     try {
         const userId = reciver_id
-        const response = await axios.get(`http://localhost:8080/api/user/get-user/${userId}`)
+        const response = await axios.get(`https://lms-backend-1-q2w4.onrender.com/api/user/get-user/${userId}`)
         setReciverData(response.data.user )
     } catch (error) {
         console.log(error)

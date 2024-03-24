@@ -8,7 +8,7 @@ export default function TodoInputer(props) {
     try{
       const user = JSON.parse(localStorage.getItem('auth'));
       const userId = user.id; 
-      const respons = await axios.post('http://localhost:8080/api/todo/add-todo',{
+      const respons = await axios.post('https://lms-backend-1-q2w4.onrender.com/api/todo/add-todo',{
       userId,text
       });
       if(respons.data.status){

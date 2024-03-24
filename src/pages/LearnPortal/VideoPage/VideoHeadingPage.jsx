@@ -11,7 +11,7 @@ const VideoHeadingPage = () => {
     try{
       setLoading(true)
       const id = courseData 
-      const response = await axios.get(`http://localhost:8080/api/topics/get-topic/${id}`)
+      const response = await axios.get(`https://lms-backend-1-q2w4.onrender.com/api/topics/get-topic/${id}`)
 
       setData(response.data.data)
     }catch(e){

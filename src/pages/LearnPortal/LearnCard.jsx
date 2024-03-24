@@ -14,7 +14,7 @@ const LearnCard = props=>{
                 <div className="flex flex-col items-center justify-evenly">
                     {/* image div */}
                     <div>
-                        <img src={`http://localhost:8080/${props.image}`} alt="" className="w-40"/>
+                        <img src={`https://lms-backend-1-q2w4.onrender.com/${props.image}`} alt="" className="w-40"/>
                     </div>
                     {/* image div end */}
                     {/* Heading div */}

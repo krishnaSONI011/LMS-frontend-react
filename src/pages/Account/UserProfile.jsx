@@ -40,7 +40,7 @@ const UserProfile = (props)=>{
                 const lastname = lastnameFunc(userName)
                 
                 const userId = auth.id
-                const response = await axios.post('http://localhost:8080/api/user/update-user',{
+                const response = await axios.post('https://lms-backend-1-q2w4.onrender.com/api/user/update-user',{
                     userId,firstname,lastname,email
                 })
                 if(response.data.status){ localStorage.setItem('auth',JSON.stringify(response.data.user))
@@ -65,7 +65,7 @@ const UserProfile = (props)=>{
         <>
         
         {/* parent div */}
-        <div className='p-2 w-96'>
+        <div className={`p-2  w-96`}>
             {/* account div */}
             <div className='flex flex-col items-center'>
                 {/* image div */}

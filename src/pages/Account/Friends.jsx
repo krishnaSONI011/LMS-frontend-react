@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import FriendsTab from './FriendsTab'
 
-const Friends = () => {
+const Friends = (props) => {
   const [data,setData] = useState([])
   
   const [loading,setLoading] = useState(false)
@@ -14,7 +14,7 @@ const Friends = () => {
       const user = JSON.parse(localStorage.getItem('auth'))
       const userId = user.id
       setLoading(true)
-      const response = await axios.get('http://localhost:8080/api/user/get-all')
+      const response = await axios.get('https://lms-backend-1-q2w4.onrender.com/api/user/get-all')
       filterData = response.data.users.filter((f)=> userId !== f._id )
       setData(filterData)
     }catch(e){
@@ -27,7 +27,7 @@ const Friends = () => {
     getUsers()
   },[])
   return (
-    <div className='w-2/5 border rounded'>
+    <div className={` ${props.width < 994? 'w-full' : 'w-2/3'} border rounded`}>
       {/* parent div */}
       <div>
         {/* box div */}

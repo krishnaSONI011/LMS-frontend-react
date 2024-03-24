@@ -1,5 +1,5 @@
 import React from 'react'
-import image from '../../assests/developer-2.jpg'
+
 import { HiStar } from "react-icons/hi";
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -11,7 +11,7 @@ const Single = ()=>{
     const [loading, setLoading] = useState(false);
     const {coursesSlug} = useParams()
     const getData = async ()=>{
-        const response = await axios.get(`http://localhost:8080/api/course/get/${coursesSlug}`)
+        const response = await axios.get(`https://lms-backend-1-q2w4.onrender.com/api/course/get/${coursesSlug}`)
         setData(response.data.course)
         console.log(response.data)
     }
@@ -34,7 +34,7 @@ const Single = ()=>{
             const  userId = userData.id
             setLoading(true);
             const courseId = data._id
-            const response = await axios.post('http://localhost:8080/api/enroll/new-enroll',{
+            const response = await axios.post('https://lms-backend-1-q2w4.onrender.com/api/enroll/new-enroll',{
                 userId,courseId
             })
             console.log(response.data)
@@ -74,7 +74,7 @@ const Single = ()=>{
                         </div>
 
                         <div className='p-3 flex items-center   '>
-                            <img src={`http://localhost:8080/${data.logo}`} alt="" className='w-[600px] rounded'/>
+                            <img src={`https://lms-backend-1-q2w4.onrender.com/${data.logo}`} alt="" className='w-[600px] rounded'/>
                         </div>
 
                     </div>
