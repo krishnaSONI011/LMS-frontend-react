@@ -4,28 +4,30 @@ import { useState,useEffect } from 'react'
 import { toast } from 'react-toastify'
 
 const Mailwriter = (props) => {
-    const user = JSON.parse(localStorage.getItem('auth'))
-    const [emailId,setEmailId] = useState(user.email)
-    const [mail,setMail] = useState('')
-    const words = mail.split(' ').length
-    const [emailTo,setEmailTo] = useState(props.page_id === '0' ? props.email_to :'')
+  const user = JSON.parse(localStorage.getItem('auth'))
+  const [emailId,setEmailId] = useState(user.email)
+  const [mail,setMail] = useState('')
+  const words = mail.split(' ').length
+  const [emailTo,setEmailTo] = useState(props.page_id === '0' ? props.email_to :'')
+  
    async function sendMails(){
       try{
         const senderMail = emailId
         const reciverMail = emailTo
         const mailBody = mail
         const userName = user.firstname + " " + user.lastname
+        console.log(reciverMail)
         const response = await axios.post('https://lms-backend-1-q2w4.onrender.com/api/mail/send-mail',{
           senderMail,reciverMail,mailBody,userName
         })
-       setMail('')
+       setMail(' ')
         toast.success(response.data.message)
       }catch(e){
         console.log(e)
       }
     }
   return (
-    <div className={`${props.page_id === '0' ? '' : 'ml-16'} w-full`}>
+    <div className={`${props.page_id === '0' ? '' : 'ml-16'} w-full flex flex-col justify-center`}>
       {/* inputs for email writer and emailer  */}
       <div>
         
@@ -41,7 +43,7 @@ const Mailwriter = (props) => {
       </div>
       {/* inputs for email writer and emailer end */}
       {/* text area or mail area */}
-      <div className='w-3/4'>
+      <div className='w-3/4 '>
         {/* word counter */}
         <div className='flex justify-end font-1 font-semibold'>
           <span className='mr-2 font-bold'>{mail.length === 0 ? 0 : words}</span> Words

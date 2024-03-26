@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const MailBox = (props) => {
+  const [mouse,TracMouse] = React.useState(false)
+
+
+
   function timeChanger(timestamp){
   
-
-// Convert the timestamp to a Date object
 const date = new Date(timestamp);
 
 // Get the day, month, and year
@@ -27,11 +29,31 @@ return formattedDateTime;
 
   }
   return (
-    <Link to={`/mail/single-mail/${props.id}`}><div className='p-2 hover:shadow-md '>
+    <>
+    <div className='flex justify-between hover:shadow-md'>
+
+   <input 
+    type="checkbox" 
+    name={props.id} 
+    id={props.id} 
+    value={props.id} 
+    onChange={(e) => {
+        if (e.target.checked) {
+            // Add to delete list
+            props.setDelete([...props.delete, e.target.value]); // its good 
+        } else {
+            // Remove from delete list
+            props.setDelete(props.delete.filter(item => item !== e.target.value));
+        }
+    }} 
+/>
+
+    <Link to={`/mail/single-mail/${props.id}`}><div onMouseLeave={()=>TracMouse
+    (false)} onMouseEnter={()=>TracMouse(true)} className='p-2  '>
       <div className='flex justify-between'>
         {/* name */}
         <div className='font-1 font-semibold'>
-            <p>{props.name}</p>
+            <p>{props.name + " "}</p>
         </div>
         {/* description */}
         <div className='font-2 w-[500px]'>
@@ -41,10 +63,13 @@ return formattedDateTime;
         </div>
         {/* time stamp */}
         <div className='font-semibold font-1'>
-            <p>{timeChanger(props.time)}</p>
+             <p className=''>{timeChanger(props.time)}</p>
+            
         </div>
-      </div>
+      </div>    
     </div></Link>
+      </div>
+      </>
   )
 }
 

@@ -5,18 +5,19 @@ import logo from '../../assests/avatar5.png'
 
 const MailerProfile = props => {
     
-
+const user = JSON.parse(localStorage.getItem('auth'))
+const avatar = user.avatar
    
     
    
   return (
     <div>
-      <div className='p-2 w-96'>
+      <div className='p-2 w-full md:w-96'>
             {/* account div */}
             <div className='flex flex-col items-center'>
                 {/* image div */}
                 <div className=''>
-                    <img src={logo} alt="" className='hover:brightness-90 cursor-pointer w-32 rounded-full'/>
+                    <img src={avatar} alt="" className='hover:brightness-90 cursor-pointer w-32 rounded-full'/>
                 </div>
                 {/* image div end */}
                 
@@ -46,23 +47,14 @@ const MailerProfile = props => {
                         </div>
                         {/* email div end */}
                         {/* address div */}
-                        <div className='font-1 border-b-2 p-2 text-center'>
-                                Jaipur
-                        </div>
+                        
                         {/* address div end */}
                     </div>
                     {/* other data div end */}
                 </div>
                 {/* data div end */}
                 {/* button div */}
-                <div className='mt-7 flex justify-evenly w-full'>
-                    <button className='font-1 bg-red-400 text-white  px-2 rounded active:scale-95 duration-150'>
-                            back
-                    </button>
-                    <button className='bg-[#f9a682] p-2 rounded text-white font-1 text-lg active:scale-95 duration-150'>
-                        send 
-                    </button>
-                </div>
+                
                 {/* button div end */}
             </div>
             {/* account div end */}

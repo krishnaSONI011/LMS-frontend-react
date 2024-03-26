@@ -24,7 +24,7 @@ useEffect(()=>{
 },[])
 
   return (
-    <div className='flex'>
+    <div className='flex flex-col md:flex-row justify-center  w-full'>
   {
     page_id === '0' ? 
     <MailerProfile online={reciverData.online} name={reciverData.firstname + ' ' +reciverData.lastname }  email={reciverData.email}/> : <span></span>}
