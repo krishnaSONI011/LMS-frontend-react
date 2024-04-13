@@ -15,7 +15,7 @@ const Mailwriter = (props) => {
         const senderMail = emailId
         const reciverMail = emailTo
         const mailBody = mail
-        const userName = user.firstname + " " + user.lastname
+        const username  = user.firstname + " " + user.lastname
         console.log(reciverMail)
         const response = await axios.post('https://lms-backend-1-q2w4.onrender.com/api/mail/send-mail',{
           senderMail,reciverMail,mailBody,userName
