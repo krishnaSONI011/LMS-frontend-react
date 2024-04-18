@@ -12,15 +12,28 @@ const AddCourse = ()=>{
     const[courseSubtitle,setCourseSubtitle] = useState('');
     const[description,setDescription] = useState('')
     const [ image,setImage] = useState(null)
-
+    const [video,setVideo] = useState(null)
     async function postTopicData(){
       try{
-        const topic = courseTitle
-        const videoEmbed = description
+        
+       
         const courseId = course_id
-          const response = await axios.post('https://lms-backend-1-q2w4.onrender.com/api/topics/add-topic',{
-              courseId,topic,videoEmbed
-          })
+         
+          const formData = new FormData();
+          formData.append('video', image);
+          formData.append('topic', courseTitle); // Use the correct field names
+          formData.append('courseId', courseId); // Use the correct field names
+          
+      
+          const response = await axios.post(
+            'https://lms-backend-1-q2w4.onrender.com/api/topics/add-topic',
+            formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            }
+          );
           toast.success(response.data.message)
       }catch(e){
         console.log(e)
@@ -87,7 +100,7 @@ const AddCourse = ()=>{
 
             {/* third row*/}
 
-            {page_id === 'topic' ? <></> : <div className='mt-4 flex'>
+            {page_id !== 'topic' ? <></> : <div className='mt-4 flex'>
                 <div className='font-3'>
                     <label htmlFor="">{page_id === 'topic' ? 'Add Video' : 'Main Image'}</label>
                     <input
